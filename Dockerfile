@@ -9,3 +9,6 @@ COPY my.cnf /etc/mysql/conf.d/
 COPY init.sql /docker-entrypoint-initdb.d/
 
 EXPOSE 45802:3306
+
+# docker build -t cgdb .
+# docker run --rm -it -p 45802:3306  cgdb
