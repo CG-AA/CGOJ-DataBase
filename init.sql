@@ -36,7 +36,7 @@ CREATE TABLE user_roles (
 CREATE TABLE problems (
     id INT PRIMARY KEY AUTO_INCREMENT,
     owner_id INT NOT NULL,
-    title VARCHAR(100) NOT NULL,
+    name VARCHAR(100) NOT NULL,
     description TEXT NOT NULL,
     input_format TEXT NOT NULL,
     output_format TEXT NOT NULL,
