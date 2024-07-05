@@ -36,7 +36,7 @@ CREATE TABLE user_roles (
 CREATE TABLE problems (
     id INT PRIMARY KEY AUTO_INCREMENT,
     owner_id INT NOT NULL,
-    name VARCHAR(100) NOT NULL,
+    title VARCHAR(100) NOT NULL,
     description TEXT NOT NULL,
     input_format TEXT NOT NULL,
     output_format TEXT NOT NULL,
@@ -56,16 +56,17 @@ CREATE TABLE problem_sample_IO (
 );
 
 CREATE TABLE tags (
-    name VARCHAR(50) NOT NULL UNIQUE PRIMARY KEY
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL UNIQUE
 );
 
 CREATE TABLE problem_tags (
     problem_id INT NOT NULL,
-    tag_name VARCHAR(50) NOT NULL,
-    PRIMARY KEY (problem_id, tag_name),
+    tag_id INT NOT NULL,
+    PRIMARY KEY (problem_id, tag_id),
     FOREIGN KEY (problem_id) REFERENCES problems(id),
-    FOREIGN KEY (tag_name) REFERENCES tags(name),
-    INDEX (tag_name),
+    FOREIGN KEY (tag_id) REFERENCES tags(id),
+    INDEX (tag_id),
     INDEX (problem_id)
 );
 
@@ -76,23 +77,27 @@ CREATE TABLE problem_test_cases (
     output TEXT,
     time_limit INT NOT NULL,
     memory_limit INT NOT NULL,
+    score SMALLINT NOT NULL,    -- 0 >= score <= 10,000
     FOREIGN KEY (problem_id) REFERENCES problems(id)
+    INDEX (problem_id)
 );
 
-CREATE TABLE solutions (
+CREATE TABLE problem_solutions (
     id INT PRIMARY KEY AUTO_INCREMENT,
     problem_id INT NOT NULL,
     title TEXT NOT NULL,
     solution TEXT NOT NULL,
     FOREIGN KEY (problem_id) REFERENCES problems(id)
+    INDEX (problem_id)
 );
 
-CREATE TABLE hints (
+CREATE TABLE problem_hints (
     id INT PRIMARY KEY AUTO_INCREMENT,
     problem_id INT NOT NULL,
+    title TEXT NOT NULL,
     hint TEXT NOT NULL,
-    context TEXT NOT NULL,
     FOREIGN KEY (problem_id) REFERENCES problems(id)
+    INDEX (problem_id)
 );
 
 CREATE TABLE submissions (
