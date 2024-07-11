@@ -100,7 +100,7 @@ CREATE TABLE problem_hints (
     INDEX (problem_id)
 );
 
-CREATE TABLE submissions (
+CREATE TABLE problem_submissions (
     id INT PRIMARY KEY AUTO_INCREMENT,
     problem_id INT NOT NULL,
     user_id INT NOT NULL,
@@ -116,7 +116,7 @@ CREATE TABLE submissions (
     INDEX (user_id)
 );
 
-CREATE TABLE submissions_subtasks (
+CREATE TABLE problem_submissions_subtasks (
     submission_id INT NOT NULL,
     id INT NOT NULL,
     PRIMARY KEY (submission_id, id),
