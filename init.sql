@@ -87,6 +87,7 @@ CREATE TABLE problem_solutions (
     problem_id INT NOT NULL,
     title TEXT NOT NULL,
     solution TEXT NOT NULL,
+    owner_id INT NOT NULL,
     FOREIGN KEY (problem_id) REFERENCES problems(id)
     INDEX (problem_id)
 );
