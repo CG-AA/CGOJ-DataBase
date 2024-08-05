@@ -4,8 +4,8 @@ USE CG_DB;
 CREATE TABLE permission_flags (
     name VARCHAR(50) PRIMARY KEY NOT NULL,
     offset INT NOT NULL,
-    INDEX (offset),
-    description TEXT
+    description TEXT,
+    INDEX (offset)
 );
 
 CREATE TABLE users (
@@ -88,7 +88,7 @@ CREATE TABLE problem_solutions (
     title TEXT NOT NULL,
     solution TEXT NOT NULL,
     owner_id INT NOT NULL,
-    FOREIGN KEY (problem_id) REFERENCES problems(id)
+    FOREIGN KEY (problem_id) REFERENCES problems(id),
     INDEX (problem_id)
 );
 
@@ -97,7 +97,7 @@ CREATE TABLE problem_hints (
     problem_id INT NOT NULL,
     title TEXT NOT NULL,
     hint TEXT NOT NULL,
-    FOREIGN KEY (problem_id) REFERENCES problems(id)
+    FOREIGN KEY (problem_id) REFERENCES problems(id),
     INDEX (problem_id)
 );
 
