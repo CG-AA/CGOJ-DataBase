@@ -78,7 +78,7 @@ CREATE TABLE problem_test_cases (
     time_limit INT NOT NULL,
     memory_limit INT NOT NULL,
     score SMALLINT NOT NULL,    -- 0 >= score <= 10,000
-    FOREIGN KEY (problem_id) REFERENCES problems(id)
+    FOREIGN KEY (problem_id) REFERENCES problems(id),
     INDEX (problem_id)
 );
 
